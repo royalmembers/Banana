@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="Banana; Meng; Royal Site; Jinchen Art; Personal Webs;" name="keywords" />
+<meta content="The web site for Banana Zhu." name="description" />
+<meta name="application-name" content="Banana Zhu in Kingcean.com"/>
+<meta name="msapplication-tooltip" content="The personal website for Banana Zhu in Kingcean.com website with the relationship."/>
+<meta name="msapplication-starturl" content="http://hana.kingcean.com/"/>
+<meta name="msapplication-navbutton-color" content="#DDDDCC"/>
+<meta name="msapplication-task" content="name=Open Showcase;action-uri=http://hana.kingcean.com;icon-uri=images/icons/realfile/newstyle.ico"/>
+<meta name="msapplication-task" content="name=Open Kingcean.com;action-uri=http://www.kingcean.com;icon-uri=images/icons/realfile/newstyle.ico"/>
+<title>Royal Banana - Kingcean.com</title>
+<style type="text/css">
+body {
+	margin: 0px; padding: inherit; font-size: 12px; background-color: #FFFFFF; background-image: url('images/normal/special/bg_zmc_p00.jpg'); background-repeat: repeat-x;
+}
+h3 {
+	font-size: 24px; color: #999999; font-weight: normal; font-style: normal; font-variant: normal; text-transform: none; text-decoration: none; line-height: 24px; padding: 0; margin: 0;
+}
+div.picTitleContainer {
+	width: 360px; height: 30px; line-height: 30px; position: absolute; top: 24px; left: 66px; overflow: hidden;
+}
+div.picDisplayContainer {
+	width: 960px; height: 720px; position: absolute; top: 73px; left: 20px; overflow: hidden;
+}
+div.picDisplayContainer img {
+	width: 960px; height: 720px; border-width: 0; border-style: none;
+}
+div.picControllerContainer {
+	width: 416px; height: 32px; position: absolute; top: 810px; left: 285px; overflow: hidden;
+}
+div.picControllerContainer div.picListItem {
+	float: left; margin: 0 5px 0 5px; cursor: pointer;
+}
+div.picControllerContainer div.picListItem img {
+	width: 32px; height: 32px; border-width: 0; border-style: none;
+}
+div.picListContainer {
+	width: 960px; height: 120px; position: absolute; top: 855px; left: 20px; overflow: hidden;
+}
+div.picListPrev {
+	border-style: solid; border-width: 1px; border-color: #FFFFFF; cursor: default; position: absolute; background-color: #E0E0E0; width: 20px; left: 0; top: 0; bottom: 0;
+}
+div.picListNext {
+	border-style: solid; border-width: 1px; border-color: #FFFFFF; cursor: default; position: absolute; background-color: #E0E0E0; width: 20px; right: 0; top: 0; bottom: 0;
+}
+div.picListColl {
+	border-style: solid; border-width: 1px; border-color: #FFFFFF; position: absolute; left: 21px; right: 21px; top: 0; bottom: 0;
+}
+div.picListColl div.picListItem {
+	border-style: solid; border-width: 1px; border-color: #FFFFFF; float: left; margin: 0 1px 0 1px; cursor: pointer;
+}
+div.picListColl div.picListItem img {
+	width: 160px; height: 120px; border-width: 0; border-style: none;
+}
+</style>
+<script type="text/javascript">
+<!--
+	var picTurnRep = false;
+	var picCurPosition = 0;
+	var picCollection = new Array();
+	picCollection = [
+		{
+			"title" : "Welcome",
+			"imgurl" : "~/images/icons/blank/clear.gif",
+			"type" : "static"
+		},
+		{
+			"title" : "Meet",
+			"imgurl" : "~/images/normal/special/pg_banana5_b.jpg",
+			"type" : "content"
+		},
+		{
+			"title" : "Start",
+			"imgurl" : "~/images/normal/special/pg_banana5_c.jpg",
+			"type" : "content"
+		},
+		{
+			"title" : "1 Year",
+			"imgurl" : "~/images/normal/special/pg_banana5_d.jpg",
+			"type" : "content"
+		},
+		{
+			"title" : "2 Years",
+			"imgurl" : "~/images/normal/special/pg_banana5_e.jpg",
+			"type" : "content"
+		},
+		{
+			"title" : "Coming Soon",
+			"imgurl" : "~/images/normal/special/pg_banana5_n.jpg",
+			"type" : "static"
+		}
+	];
+	function getUrl(url)
+	{
+		return url.replace("~/", "/").replace("{ldlocal}/", "/").replace("{ldlocal}", "/");
+	}
+	function turnTo(i)
+	{
+		if (i < picCollection.length)
+		{
+			var item = picCollection[i];
+			document.getElementById("mainPicDisplay").src = getUrl(item["imgurl"]);
+			document.getElementById("mainPicDisplay").alt = item["title"];
+			document.getElementById("mainPicTitle").innerHTML = item["title"] + " - Honey Story";
+			document.getElementById("picControllerCurrentTitle").innerHTML = "<span>" + item["title"] + "</span>";
+			picCurPosition = i;
+			window.scrollTo(0, 0);
+		}
+	}
+	function turnToPrev()
+	{
+		var i = picCurPosition - 1;
+		if (picTurnRep && i < 0) i = picCollection.length;
+		turnTo(i);
+	}
+	function turnToNext()
+	{
+		var i = picCurPosition + 1;
+		if (picTurnRep && i >= picCollection.length) i = 0;
+		turnTo(i);
+	}
+	function showList()
+	{
+		var tmpStr = "";
+		for (var i = 1; i < picCollection.length; i++)
+		{
+			var item = picCollection[i];
+			if (item["type"] == "static") continue;
+			tmpStr += "<div class=\"picListItem\" ><img alt=\""
+			tmpStr += item["title"];
+			tmpStr += "\" src=\""
+			tmpStr += getUrl(item["imgurl"]);
+			tmpStr += "\" width=\"160px\" height=\"120px\" onclick=\"turnTo("
+			tmpStr += i.toString();
+			tmpStr += ")\" /></div>";
+		}
+		document.getElementById("listPicCollection").innerHTML = tmpStr;
+	}
+//-->
+</script>
+</head>
+
+<body>
+
+<div style="text-align: center; width: 100%; font-size: 12px; cursor: default; " >
+	<div style="padding: 0px; margin: 0px auto 0px auto; text-align: left; width: 1000px; height: 1200px; background-image: url('/images/normal/special/bg_zmc_s02.jpg'); background-repeat: no-repeat; position: relative; overflow: hidden; " >
+		<div style="height: 100px; position: relative; " >
+			<div style="display: none;">
+				<h1>Royal Banana</h1>
+				<h2>http://zmc.kingcean.com</h2>
+			</div>
+			<div>
+				<span>&nbsp;</span>
+			</div>
+		</div>
+		<div style="height: 980px; position: relative; " >
+			<div class="picTitleContainer" >
+				<h3 id="mainPicTitle">Welcome - Honey Story</h3>
+			</div>
+			<div style="color: #999999; line-height: 24px; font-size: 16px; right: 54px; top: 24px; bottom: 0; position: absolute; overflow: hidden; " >
+				<span>Still Writing</span>
+			</div>
+			<div class="picDisplayContainer" >
+				<img id="mainPicDisplay" alt="Banana" src="/images/icons/blank/clear.gif" width="960px" height="720px" />
+			</div>
+			<div class="picControllerContainer" >
+					<div class="picListItem" >
+						<img alt="Home" src="/images/icons/blank/clear.gif" width="32px" height="32px" onclick="turnTo(0);" />
+					</div>
+					<div class="picListItem" >
+						<img alt="Previous" src="/images/icons/blank/clear.gif" width="32px" height="32px" onclick="turnToPrev();" />
+					</div>
+					<div class="picListItem" >
+						<img alt="Next" src="/images/icons/blank/clear.gif" width="32px" height="32px" onclick="turnToNext();" />
+					</div>
+					<div id="picControllerCurrentTitle" style="color: #666666; float: left; margin: 0 10px 0 10px; line-height: 32px; " >
+						<span>Welcome</span>
+					</div>
+			</div>
+			<div class="picListContainer" >
+				<div class="picListPrev" >
+					<span>&nbsp;</span>
+				</div>
+				<div id="listPicCollection" class="picListColl" >
+					<span>Loading...</span>
+				</div>
+				<div class="picListNext" >
+					<span>&nbsp;</span>
+				</div>
+		</div>
+		</div>
+		<div style="height: 120px; position: relative; " >
+			<a href="http://zmc.kingcean.com/" style="text-decoration: none; display: block; position: absolute; width: 125px; height: 25px; top: 60px; left: 40px; cursor: pointer; " title="Mengchen Zhu" >
+				<span>&nbsp;</span>
+			</a>
+			<a href="http://www.kingcean.com/" style="text-decoration: none; display: block; position: absolute; width: 230px; height: 40px; top: 60px; left: 720px; cursor: pointer; " title="Kingcean.com" >
+				<span>&nbsp;</span>
+			</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+showList();
+</script>
+
+</body>
+
+</html>
